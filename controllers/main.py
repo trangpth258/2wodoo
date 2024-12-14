@@ -50,11 +50,11 @@ class CrmCustomerRequestController(http.Controller):
             output += "done ===> opportunity_id : %s - name : %s" %(record.id, record.name)
             print(request.env['crm.lead'].search([('id', '=', record.id)]))
             return output
-            # return {'id': record.id}
         except Exception as e:
             _logger.error("Error occurred: %s", str(e))
             return "Error occurred: Failed"
 
+        # return {'id': record.id}
         # return json.dumps(JsonString)
         # return request.render("crm_customer_request.detail", {})
         # return {"id": record.id, "name": record.name}
