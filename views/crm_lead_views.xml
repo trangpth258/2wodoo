@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="inherited_crm_lead_view_form" model="ir.ui.view">
+        <field name="name">crm.lead.form.inherit.crm_customer_request</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+        <field name="arch" type="xml">
+            <group>
+                <field name="requests_total" invisible="1" widget="monetary"/>
+                <field name="requests_count" invisible="1"/>
+                <field name="currency_id" invisible="1" options="{'no_create': True}"/>
+            </group>
+            <notebook>
+                <page string="Customer Request" name="customer_request">
+                    <field name="request_ids" 
+                    mode="tree,form" 
+                    idget="section_and_note_one2many"
+                    attrs="{'readonly': [('stage_id', '!=', 1)]}"
+                    >
+                        <form string="Customer Request">
+                            <group>
+                                <group>
+                                    <field name="product_id" options="{'no_create': True}"/>
+                                    <field name="opportunity_id" invisible="1"/>
+                                    <field name="description"/>
+                                </group>
+                                <group>
+                                    <field name="date"/>
+                                    <field name="qty"/>
+                                </group>
+                            </group>
+                        </form>
+                        <tree string="Crm Customer Request"
+                            editable="bottom">
+                            <control>
+                                <create name="add_product_control" string="Add a product"/>
+                            </control>
+                            <field name="product_id"/>
+                            <field name="opportunity_id" invisible="1"/>
+                            <field name="description"/>
+                            <field name="date"/>
+                            <field name="qty"/>
+                        </tree>
+                    </field>
+                </page>
+            </notebook>
+        </field>
+    </record>
+
+    
+    <menuitem
+        id="reques_menu_sale"
+        name="Customer Request"
+        action="crm_customer_request.customer_request_action"
+        parent="crm.crm_menu_sales"
+        sequence="1"/>
+
+</odoo>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem id="customer_request_menu_root"
+        name="Request Management"
+        >
+        <!--
+        active="False" k cho activate
+       -->
+    </menuitem>
+    <menuitem
+        id="customer_request_menu_info"
+        name="Customer Request"
+        parent="customer_request_menu_root"
+        action="customer_request_action"
+    />
+</odoo>

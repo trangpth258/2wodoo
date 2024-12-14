@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<template id="detail" name="Job Detail">
+    <t t-call="website.layout">
+    <t t-set="title">Create Lead</t>
+    <div class="oe_structure">
+        <div class="container">
+            <t t-foreach="result" t-as="record">
+                <p><t t-esc="record.name"></p>
+            </t>
+        </div>
+    </div>
+    </t>
+</template>
+</odoo>
