@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="import_request_form" model="ir.ui.view">
+        <field name="name">import.request.lead.form</field>
+        <field name="model">import.request.lead</field>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <group>
+                        <field name="excel_file"/>
+                        <span>Template</span>
+                        <button name="action_download_template"
+                            type="object"
+                            class="oe_link"
+                            string="Download Template"
+                        />
+                    </group>
+                        
+                </group>
+                <footer>
+                    <button name="import_data" string="Confirm" type="object" class="btn-primary"/>
+                    <button string="Discard" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_open_form_import" model="ir.actions.act_window">
+        <field name="name">Import Excel</field>
+        <field name="res_model">import.request.lead</field>
+        <field name="view_ids"
+                eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('import_request_form')})]" />
+        <field name="target">new</field>
+    </record>
+</odoo>

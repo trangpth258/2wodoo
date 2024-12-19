@@ -1,4 +1,4 @@
-from odoo import fields, models, api
+from odoo import fields, models, api, Command, _
 
 class CrmLead(models.Model):
     _inherit = 'crm.lead'
@@ -28,6 +28,31 @@ class CrmLead(models.Model):
             else:
                 partner.currency_id = self.env.company.currency_id
     
+
+    def open_import_form_wizard(self):
+        self.ensure_one()
+        return {
+            "name": "Import Customer Request",
+            "type": "ir.actions.act_window",
+            "view_type": "form",
+            "view_mode": "form",
+            "res_model": "import.request.lead",
+            "target": "new",
+            'context': {'default_crm_lead_id': self.id}
+        }
+
+    
+    # def get_function_test(self):
+    #     return {
+    #         'name': _('Lead or Opportunity'),
+    #         'view_mode': 'form',
+    #         'res_model': 'crm.lead',
+    #         'domain': [('type', '=', self.type)],
+    #         'res_id': self.id,
+    #         'view_id': False,
+    #         'type': 'ir.actions.act_window',
+    #         'context': {'default_type': self.type}
+    #     }
 
 
     

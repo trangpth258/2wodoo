@@ -13,6 +13,9 @@
     ],
     'data': [
         "security/ir.model.access.csv",
+
+        "wizard/import_request_views.xml",
+
         # "views/crm_customer_request_templates.xml",
         "views/crm_lead_views.xml",
         "views/crm_customer_request_views.xml",

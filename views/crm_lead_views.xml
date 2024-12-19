@@ -6,12 +6,20 @@
         <field name="inherit_id" ref="crm.crm_lead_view_form"/>
         <field name="arch" type="xml">
             <group>
-                <field name="requests_total" invisible="1" widget="monetary"/>
-                <field name="requests_count" invisible="1"/>
+                <field name="requests_total" widget="monetary"/>
+                <field name="requests_count"/>
                 <field name="currency_id" invisible="1" options="{'no_create': True}"/>
             </group>
             <notebook>
                 <page string="Customer Request" name="customer_request">
+
+                    <button name="open_import_form_wizard"
+                        type="object"
+                        class="oe_link"
+                        title="Add to Customer Request"
+                        string="Import Records"
+                        attrs="{'invisible': [('stage_id', '!=', 1)]}" 
+                    />
                     <field name="request_ids" 
                     mode="tree,form" 
                     idget="section_and_note_one2many"
@@ -35,7 +43,7 @@
                             <control>
                                 <create name="add_product_control" string="Add a product"/>
                             </control>
-                            <field name="product_id"/>
+                            <field name="product_id"  options="{'no_create': True}"/>
                             <field name="opportunity_id" invisible="1"/>
                             <field name="description"/>
                             <field name="date"/>
