@@ -10,11 +10,12 @@
                     <group>
                         <field name="excel_file"/>
                         <span>Template</span>
-                        <button name="action_download_template"
+                        <!-- <button name="action_download_template"
                             type="object"
                             class="oe_link"
                             string="Download Template"
-                        />
+                        /> -->
+                        <button name="action_download_template" string="Download" type="object"/>
                     </group>
                         
                 </group>

@@ -9,6 +9,7 @@ import openpyxl
 from xlrd import open_workbook
 import base64
 import datetime
+import odoo
 
 from odoo.http import content_disposition
 
@@ -54,12 +55,13 @@ class ImportRequestLead(models.TransientModel):
         #     'label': _('Import Template for Leads & Opportunities'),
         #     'template': '/crm_customer_request/static/xls/crm_lead.xls'
         # }]
+        print("==============check file excel import ==============")
+        
         return [{
             'type': 'ir.actions.act_url',
             'url': '/web/content/%s/%s?download=true' % (
                 self._name, '/crm_customer_request/static/xls/crm_lead.xls'),
-            'target': 'new',
-            'nodestroy': True
+            'target': 'new'
         }]
 
    
